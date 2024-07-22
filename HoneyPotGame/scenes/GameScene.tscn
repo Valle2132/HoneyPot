@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj0ct72nab0gx"]
+
+[ext_resource type="Script" path="res://scripts/GameScene.cs" id="1_s1pee"]
+[ext_resource type="PackedScene" uid="uid://tfdhh5pc0hah" path="res://scenes/PlayerScene.tscn" id="2_hjsj3"]
+[ext_resource type="PackedScene" uid="uid://cf5w6tnbfg6le" path="res://scenes/EnemyScene.tscn" id="3_fwmfu"]
+
+[node name="GameScene" type="Node2D"]
+script = ExtResource("1_s1pee")
+
+[node name="PlayerScene" parent="." instance=ExtResource("2_hjsj3")]
+position = Vector2(573, 501)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="EnemyScene" parent="." instance=ExtResource("3_fwmfu")]
+position = Vector2(466, 81)
