@@ -1,17 +1,102 @@
-[gd_scene load_steps=4 format=3 uid="uid://dj0ct72nab0gx"]
+[gd_scene load_steps=8 format=3 uid="uid://dj0ct72nab0gx"]
 
 [ext_resource type="Script" path="res://scripts/GameScene.cs" id="1_s1pee"]
-[ext_resource type="PackedScene" uid="uid://tfdhh5pc0hah" path="res://scenes/PlayerScene.tscn" id="2_hjsj3"]
+[ext_resource type="PackedScene" uid="uid://dgecjv5qv0oew" path="res://scenes/PlayerScene.tscn" id="2_hjsj3"]
 [ext_resource type="PackedScene" uid="uid://cf5w6tnbfg6le" path="res://scenes/EnemyScene.tscn" id="3_fwmfu"]
+[ext_resource type="Texture2D" uid="uid://dw7nkxmmwk7y3" path="res://icon.svg" id="4_c2v21"]
+[ext_resource type="Texture2D" uid="uid://vq7jarl21jx2" path="res://debug_dot.png" id="5_sm7ml"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2j7dy"]
+radius = 40.0
+height = 640.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q1pjc"]
+size = Vector2(64, 1080)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_s1pee")
 
 [node name="PlayerScene" parent="." instance=ExtResource("2_hjsj3")]
-position = Vector2(573, 501)
+position = Vector2(960, 832)
+scale = Vector2(1.5, 0.4)
+
+[node name="Background" type="Sprite2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(576, 324)
+position = Vector2(960, 540)
 
 [node name="EnemyScene" parent="." instance=ExtResource("3_fwmfu")]
-position = Vector2(466, 81)
+position = Vector2(728, 96)
+
+[node name="HoneyPot" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HoneyPot"]
+position = Vector2(960, 960)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2j7dy")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="BoundaryLeft" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryLeft"]
+position = Vector2(608, 540)
+shape = SubResource("RectangleShape2D_q1pjc")
+
+[node name="BoundaryRight" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryRight"]
+position = Vector2(1312, 540)
+shape = SubResource("RectangleShape2D_q1pjc")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HP_Empty1" type="TextureRect" parent="HUD"]
+offset_left = 1816.0
+offset_top = 24.0
+offset_right = 1949.0
+offset_bottom = 157.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_sm7ml")
+expand_mode = 1
+
+[node name="HP_Empty2" type="TextureRect" parent="HUD"]
+offset_left = 1720.0
+offset_top = 24.0
+offset_right = 1853.0
+offset_bottom = 157.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_sm7ml")
+expand_mode = 1
+
+[node name="HP_Empty3" type="TextureRect" parent="HUD"]
+offset_left = 1624.0
+offset_top = 24.0
+offset_right = 1757.0
+offset_bottom = 157.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_sm7ml")
+expand_mode = 1
+
+[node name="HP1" type="TextureRect" parent="HUD"]
+offset_left = 1816.0
+offset_top = 24.0
+offset_right = 1949.0
+offset_bottom = 157.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_c2v21")
+
+[node name="HP2" type="TextureRect" parent="HUD"]
+offset_left = 1720.0
+offset_top = 24.0
+offset_right = 1853.0
+offset_bottom = 157.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_c2v21")
+
+[node name="HP3" type="TextureRect" parent="HUD"]
+offset_left = 1624.0
+offset_top = 24.0
+offset_right = 1757.0
+offset_bottom = 157.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("4_c2v21")
