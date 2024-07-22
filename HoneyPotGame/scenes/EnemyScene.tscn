@@ -7,6 +7,9 @@
 radius = 16.0
 
 [node name="EnemyScene" type="RigidBody2D"]
+lock_rotation = true
+max_contacts_reported = 1000
+contact_monitor = true
 script = ExtResource("1_ggre5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -15,3 +18,5 @@ texture = ExtResource("1_n26qi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sxn1o")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

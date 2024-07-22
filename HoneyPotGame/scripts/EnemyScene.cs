@@ -7,24 +7,35 @@ public partial class EnemyScene : RigidBody2D
 	public float GravityScale = 0.5f;
 	
 	private Vector2 gravity;
-
+	
+	private GameScene _gameScript;
+	
 	public override void _Ready()
 	{
 		gravity = new Vector2(0, 980) * GravityScale;
-	}
-	
-	public override void _PhysicsProcess(double delta)
-	{
-		if (MoveAndCollide(gravity * (float)delta) != null)
-		{
-			KillEnemy();
-		}
+		
+		_gameScript = GetNode<GameScene>("..");
 	}
 	
 	private void KillEnemy()
 	{
 		QueueFree();
-		
 		// TODO: add sound
 	}
+
+	private void _on_body_entered(Node body)
+	{
+		if(body.IsInGroup("Player"))
+		{
+			KillEnemy();
+		}
+		else
+		{
+			_gameScript.Contamination();
+			KillEnemy();
+		}
+	}
 }
+
+
+
