@@ -10,32 +10,21 @@ public partial class EnemyScene : RigidBody2D
 	
 	private GameScene _gameScript;
 	
+	private AudioStreamPlayer PlayerSound;
+	private AudioStreamPlayer EnemySound;
+	
 	public override void _Ready()
 	{
 		gravity = new Vector2(0, 980) * GravityScale;
 		
 		_gameScript = GetNode<GameScene>("..");
+		
+		PlayerSound = GetNode<AudioStreamPlayer>("PlayerSound");
+		EnemySound = GetNode<AudioStreamPlayer>("EnemySound");
 	}
 	
-	private void KillEnemy()
+	private async void KillEnemy()
 	{
 		QueueFree();
-		// TODO: add sound
-	}
-
-	private void _on_body_entered(Node body)
-	{
-		if(body.IsInGroup("Player"))
-		{
-			KillEnemy();
-		}
-		else
-		{
-			_gameScript.Contamination();
-			KillEnemy();
-		}
 	}
 }
-
-
-
