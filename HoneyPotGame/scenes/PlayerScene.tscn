@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/PlayerScene.cs" id="1_6rryu"]
 [ext_resource type="Texture2D" uid="uid://dtf4plkcle88k" path="res://assets/graphics/player.png" id="2_d7rhe"]
-[ext_resource type="AudioStream" uid="uid://cm2ywg46hyvbx" path="res://assets/audio/player.wav" id="3_drk3c"]
+[ext_resource type="AudioStream" uid="uid://c64vgwfqto2y2" path="res://assets/audio/player.wav" id="3_drk3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aublc"]
 size = Vector2(320, 128)
@@ -34,5 +34,6 @@ shape = SubResource("RectangleShape2D_nyr2q")
 
 [node name="PlayerSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_drk3c")
+volume_db = -9.369
 
 [connection signal="body_entered" from="CheckEnemy" to="." method="_on_check_enemy_body_entered"]

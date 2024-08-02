@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bmqy367t7k1gj"]
 
 [ext_resource type="Script" path="res://scripts/HoneyPotScene.cs" id="1_acqag"]
-[ext_resource type="AudioStream" uid="uid://bm6p0m3p00rtt" path="res://assets/audio/enemy.wav" id="2_msyi0"]
+[ext_resource type="AudioStream" uid="uid://qhr72sc6kycl" path="res://assets/audio/enemy.wav" id="2_msyi0"]
 [ext_resource type="Texture2D" uid="uid://cl6coe3urwb1x" path="res://assets/graphics/pot.png" id="2_x417e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ful22"]

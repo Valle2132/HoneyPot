@@ -30,6 +30,7 @@ public partial class GameScene : Node2D
 		_hp--;
 		if(_hp <= 0)
 		{
+			
 			_gameOver();
 		}
 		_updateHealthDisplay();
@@ -45,7 +46,7 @@ public partial class GameScene : Node2D
 	private void _on_enemy_spawn_timer_timeout()
 	{
 		EnemyScene Enemy = EnemyScene.Instantiate<EnemyScene>();
-		
+	
 		Enemy.Position = new Vector2((float)GD.RandRange(660, 1260), 0);
 		Enemy.RotationDegrees = (float)GD.RandRange(0, 360);
 		
@@ -54,7 +55,22 @@ public partial class GameScene : Node2D
 	
 	private void _gameOver()
 	{
-		// TODO
+		GetNode<Timer>("EnemySpawnTimer").Stop();
+		GetNode<CanvasLayer>("GameOver").Show();
+		
+		GetNode<EnemyScene>("EnemyScene").QueueFree();
+		
+		GetTree().Paused = true;
+	}
+	
+	private void _on_retry_button_pressed()
+	{
+		GetTree().Paused = false;
+		GetTree().ReloadCurrentScene();
+	}
+	
+	private void _on_quit_button_pressed()
+	{
 		GetTree().Quit();
 	}
 }
