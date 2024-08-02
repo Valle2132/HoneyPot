@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddvvjtcqgvkkt"]
 
-[ext_resource type="Texture2D" uid="uid://dw7nkxmmwk7y3" path="res://icon.svg" id="1_05ygm"]
 [ext_resource type="Script" path="res://scripts/PlayerScene.cs" id="1_6rryu"]
+[ext_resource type="Texture2D" uid="uid://dtf4plkcle88k" path="res://assets/graphics/player.png" id="2_d7rhe"]
 [ext_resource type="AudioStream" uid="uid://cm2ywg46hyvbx" path="res://assets/audio/player.wav" id="3_drk3c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aublc"]
@@ -11,13 +11,16 @@ size = Vector2(320, 128)
 size = Vector2(320, 128)
 
 [node name="PlayerScene" type="CharacterBody2D" groups=["Player"]]
+z_index = 2
 scale = Vector2(0.5, 0.5)
 motion_mode = 1
 script = ExtResource("1_6rryu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(2.5, 1)
-texture = ExtResource("1_05ygm")
+z_index = 2
+position = Vector2(-7.62939e-06, 1.90735e-06)
+scale = Vector2(0.833333, 0.592593)
+texture = ExtResource("2_d7rhe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_aublc")

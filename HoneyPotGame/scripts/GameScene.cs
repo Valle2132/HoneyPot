@@ -47,6 +47,7 @@ public partial class GameScene : Node2D
 		EnemyScene Enemy = EnemyScene.Instantiate<EnemyScene>();
 		
 		Enemy.Position = new Vector2((float)GD.RandRange(660, 1260), 0);
+		Enemy.RotationDegrees = (float)GD.RandRange(0, 360);
 		
 		AddChild(Enemy);
 	}

@@ -3,17 +3,15 @@
 [ext_resource type="Script" path="res://scripts/GameScene.cs" id="1_s1pee"]
 [ext_resource type="PackedScene" uid="uid://ddvvjtcqgvkkt" path="res://scenes/PlayerScene.tscn" id="2_hjsj3"]
 [ext_resource type="PackedScene" uid="uid://bmqy367t7k1gj" path="res://scenes/HoneyPotScene.tscn" id="3_mvq86"]
-[ext_resource type="Texture2D" uid="uid://dw7nkxmmwk7y3" path="res://icon.svg" id="4_c2v21"]
-[ext_resource type="Texture2D" uid="uid://vq7jarl21jx2" path="res://debug_dot.png" id="5_sm7ml"]
+[ext_resource type="Texture2D" uid="uid://7s17qb27hoj5" path="res://assets/graphics/pot_black.png" id="4_ym36e"]
+[ext_resource type="Texture2D" uid="uid://cl6coe3urwb1x" path="res://assets/graphics/pot.png" id="5_todhc"]
+[ext_resource type="Texture2D" uid="uid://bc6vgsp75diey" path="res://assets/graphics/background.png" id="6_qpgm6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1pjc"]
 size = Vector2(64, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axsyu"]
 size = Vector2(768, 56)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_1vxp7"]
-specular_color = Color(0.501961, 0.501961, 0.501961, 1)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_s1pee")
@@ -49,62 +47,65 @@ shape = SubResource("RectangleShape2D_axsyu")
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="HP_Empty1" type="TextureRect" parent="HUD"]
-offset_left = 1816.0
-offset_top = 24.0
-offset_right = 1949.0
-offset_bottom = 157.0
+offset_left = 1828.0
+offset_top = 16.0
+offset_right = 1921.0
+offset_bottom = 162.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("5_sm7ml")
+texture = ExtResource("4_ym36e")
 expand_mode = 1
 
 [node name="HP_Empty2" type="TextureRect" parent="HUD"]
-offset_left = 1720.0
-offset_top = 24.0
-offset_right = 1853.0
-offset_bottom = 157.0
+offset_left = 1732.0
+offset_top = 16.0
+offset_right = 1825.0
+offset_bottom = 162.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("5_sm7ml")
+texture = ExtResource("4_ym36e")
 expand_mode = 1
 
 [node name="HP_Empty3" type="TextureRect" parent="HUD"]
-offset_left = 1624.0
-offset_top = 24.0
-offset_right = 1757.0
-offset_bottom = 157.0
+offset_left = 1636.0
+offset_top = 16.0
+offset_right = 1729.0
+offset_bottom = 162.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("5_sm7ml")
+texture = ExtResource("4_ym36e")
 expand_mode = 1
 
 [node name="HP1" type="TextureRect" parent="HUD"]
-offset_left = 1816.0
-offset_top = 24.0
-offset_right = 1949.0
-offset_bottom = 157.0
+offset_left = 1828.0
+offset_top = 16.0
+offset_right = 1922.0
+offset_bottom = 162.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_c2v21")
+texture = ExtResource("5_todhc")
+expand_mode = 1
 
 [node name="HP2" type="TextureRect" parent="HUD"]
-offset_left = 1720.0
-offset_top = 24.0
-offset_right = 1853.0
-offset_bottom = 157.0
+offset_left = 1732.0
+offset_top = 16.0
+offset_right = 1825.0
+offset_bottom = 162.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_c2v21")
+texture = ExtResource("5_todhc")
+expand_mode = 1
 
 [node name="HP3" type="TextureRect" parent="HUD"]
-offset_left = 1624.0
-offset_top = 24.0
-offset_right = 1757.0
-offset_bottom = 157.0
+offset_left = 1636.0
+offset_top = 16.0
+offset_right = 1729.0
+offset_bottom = 162.0
 scale = Vector2(0.6, 0.6)
-texture = ExtResource("4_c2v21")
+texture = ExtResource("5_todhc")
+expand_mode = 1
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(960, 448)
-scale = Vector2(768, 896)
-texture = SubResource("CanvasTexture_1vxp7")
+position = Vector2(960, 540)
+scale = Vector2(1, 1)
+texture = ExtResource("6_qpgm6")
 
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
