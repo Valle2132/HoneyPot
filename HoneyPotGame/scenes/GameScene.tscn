@@ -3,18 +3,15 @@
 [ext_resource type="Script" path="res://scripts/GameScene.cs" id="1_s1pee"]
 [ext_resource type="PackedScene" uid="uid://ddvvjtcqgvkkt" path="res://scenes/PlayerScene.tscn" id="2_hjsj3"]
 [ext_resource type="PackedScene" uid="uid://cf5w6tnbfg6le" path="res://scenes/EnemyScene.tscn" id="3_fwmfu"]
+[ext_resource type="PackedScene" uid="uid://bmqy367t7k1gj" path="res://scenes/HoneyPotScene.tscn" id="3_mvq86"]
 [ext_resource type="Texture2D" uid="uid://dw7nkxmmwk7y3" path="res://icon.svg" id="4_c2v21"]
 [ext_resource type="Texture2D" uid="uid://vq7jarl21jx2" path="res://debug_dot.png" id="5_sm7ml"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2j7dy"]
-radius = 40.0
-height = 640.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q1pjc"]
 size = Vector2(64, 1080)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5bieb"]
-size = Vector2(640, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_axsyu"]
+size = Vector2(640, 56)
 
 [node name="GameScene" type="Node2D"]
 script = ExtResource("1_s1pee")
@@ -27,13 +24,8 @@ position = Vector2(960, 832)
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 
-[node name="HoneyPot" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HoneyPot"]
-position = Vector2(960, 960)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_2j7dy")
-debug_color = Color(0, 0.6, 0.701961, 0.419608)
+[node name="HoneyPot" parent="." instance=ExtResource("3_mvq86")]
+position = Vector2(640, 896)
 
 [node name="BoundaryLeft" type="StaticBody2D" parent="."]
 
@@ -46,6 +38,12 @@ shape = SubResource("RectangleShape2D_q1pjc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryRight"]
 position = Vector2(1312, 540)
 shape = SubResource("RectangleShape2D_q1pjc")
+
+[node name="BoundaryBottom" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BoundaryBottom"]
+position = Vector2(960, 1052)
+shape = SubResource("RectangleShape2D_axsyu")
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -100,13 +98,7 @@ offset_bottom = 157.0
 scale = Vector2(0.6, 0.6)
 texture = ExtResource("4_c2v21")
 
-[node name="PlayerFooter" type="StaticBody2D" parent="."]
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFooter"]
-position = Vector2(960, 867.5)
-shape = SubResource("RectangleShape2D_5bieb")
-
 [node name="EnemyScene" parent="." instance=ExtResource("3_fwmfu")]
 position = Vector2(792, -152)
+collision_layer = 5
+collision_mask = 5

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmqy367t7k1gj"]
+
+[ext_resource type="Script" path="res://scripts/HoneyPotScene.cs" id="1_acqag"]
+[ext_resource type="AudioStream" uid="uid://bm6p0m3p00rtt" path="res://assets/audio/enemy.wav" id="2_msyi0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ful22"]
+size = Vector2(640, 128)
+
+[node name="HoneyPot" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_acqag")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(320, 64)
+shape = SubResource("RectangleShape2D_ful22")
+
+[node name="EnemySound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_msyi0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

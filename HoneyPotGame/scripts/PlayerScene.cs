@@ -5,6 +5,13 @@ public partial class PlayerScene : CharacterBody2D
 {
 	public const float Speed = 300.0f;
 	
+	private AudioStreamPlayer PlayerSound;
+	
+	public override void _Ready()
+	{
+		PlayerSound = GetNode<AudioStreamPlayer>("PlayerSound");
+	}
+	
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
@@ -22,18 +29,10 @@ public partial class PlayerScene : CharacterBody2D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
-
-	/*
-		if(body.IsInGroup("Player"))
-		{
-			PlayerSound.Play();
-			KillEnemy();
-		}
-		else
-		{
-			EnemySound.Play();
-			_gameScript.Contamination();
-			KillEnemy();
-		}
-	*/
+	
+	private void _on_check_enemy_body_entered(Node2D body)
+	{
+		PlayerSound.Play();
+		body.QueueFree();
+	}
 }

@@ -3,15 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://dw7nkxmmwk7y3" path="res://icon.svg" id="1_05ygm"]
 [ext_resource type="Script" path="res://scripts/PlayerScene.cs" id="1_6rryu"]
 [ext_resource type="AudioStream" uid="uid://cm2ywg46hyvbx" path="res://assets/audio/player.wav" id="3_drk3c"]
-[ext_resource type="AudioStream" uid="uid://bm6p0m3p00rtt" path="res://assets/audio/enemy.wav" id="4_nqgum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aublc"]
 size = Vector2(320, 128)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nyr2q"]
+size = Vector2(320, 128)
+
 [node name="PlayerScene" type="CharacterBody2D" groups=["Player"]]
 scale = Vector2(0.5, 0.5)
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_6rryu")
 
@@ -25,5 +27,11 @@ shape = SubResource("RectangleShape2D_aublc")
 [node name="PlayerSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_drk3c")
 
-[node name="EnemySound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_nqgum")
+[node name="CheckEnemy" type="Area2D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckEnemy"]
+shape = SubResource("RectangleShape2D_nyr2q")
+
+[connection signal="body_entered" from="CheckEnemy" to="." method="_on_check_enemy_body_entered"]
