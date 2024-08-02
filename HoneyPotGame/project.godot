@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="HoneyPot"
-run/main_scene="res://scenes/GameScene.tscn"
+run/main_scene="res://scenes/MenuScene.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/graphics/background.png"
+config/icon="res://assets/graphics/pot.png"
 
 [display]
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://qtnsckkk576r"]
+[gd_scene load_steps=4 format=3 uid="uid://qtnsckkk576r"]
 
-[ext_resource type="Script" path="res://scenes/MenuScene.cs" id="1_veabx"]
+[ext_resource type="Script" path="res://scripts/MenuScene.cs" id="1_veabx"]
 [ext_resource type="Texture2D" uid="uid://co1bqby4bgmcc" path="res://assets/graphics/mainscreen.png" id="2_g72cf"]
+[ext_resource type="AudioStream" uid="uid://di1vblqrwo1df" path="res://assets/audio/mainmenu.wav" id="3_dyp8v"]
 
 [node name="MenuScene" type="Control"]
 layout_mode = 3
@@ -35,14 +36,15 @@ layout_mode = 2
 [node name="StartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
-text = "Start Game!"
+text = "Start Game"
 
 [node name="QuitButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 75
-text = "Quit!"
+text = "Quit"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="MainMenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dyp8v")
 autoplay = true
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

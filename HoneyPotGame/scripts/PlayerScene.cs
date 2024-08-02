@@ -5,10 +5,12 @@ public partial class PlayerScene : CharacterBody2D
 {
 	public const float Speed = 600.0f;
 	
+	private GameScene _gameScript;
 	private AudioStreamPlayer PlayerSound;
 	
 	public override void _Ready()
 	{
+		_gameScript = GetNode<GameScene>("..");
 		PlayerSound = GetNode<AudioStreamPlayer>("PlayerSound");
 	}
 	
@@ -36,6 +38,7 @@ public partial class PlayerScene : CharacterBody2D
 		{
 			PlayerSound.Play();
 			body.QueueFree();
+			_gameScript.IncrementScore();
 		}
 	}
 }

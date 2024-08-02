@@ -7,13 +7,19 @@ public partial class GameScene : Node2D
 	private TextureRect _hp2;
 	private TextureRect _hp3;
 	private int _hp;
+	public int Score;
+	private Label ScoreLabel;
+	private Label GameOverScore;
 	
 	[Export]
 	public PackedScene EnemyScene = GD.Load<PackedScene>("res://scenes/EnemyScene.tscn");
 	
 	public override void _Ready()
 	{
+		Score = 0; 
 		_initHealth();
+		ScoreLabel = GetNode<Label>("HUD/ScoreLabel");
+		GameOverScore = GetNode<Label>("GameOver/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/GameOverScore");
 	}
 	
 	private void _initHealth()
@@ -60,6 +66,7 @@ public partial class GameScene : Node2D
 		
 		GetNode<EnemyScene>("EnemyScene").QueueFree();
 		
+		GameOverScore.Text = Score.ToString();
 		GetTree().Paused = true;
 	}
 	
@@ -71,6 +78,13 @@ public partial class GameScene : Node2D
 	
 	private void _on_quit_button_pressed()
 	{
-		GetTree().Quit();
+		GetTree().Paused = false;
+		GetTree().ChangeSceneToFile("res://scenes/MenuScene.tscn");
+	}
+	
+	public void IncrementScore()
+	{
+		Score++;
+		ScoreLabel.Text = Score.ToString();
 	}
 }
