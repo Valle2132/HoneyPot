@@ -3,7 +3,7 @@ using System;
 
 public partial class PlayerScene : CharacterBody2D
 {
-	public const float Speed = 300.0f;
+	public const float Speed = 600.0f;
 	
 	private AudioStreamPlayer PlayerSound;
 	
@@ -32,7 +32,10 @@ public partial class PlayerScene : CharacterBody2D
 	
 	private void _on_check_enemy_body_entered(Node2D body)
 	{
-		PlayerSound.Play();
-		body.QueueFree();
+		if(body.IsInGroup("Enemy"))
+		{
+			PlayerSound.Play();
+			body.QueueFree();
+		}
 	}
 }
